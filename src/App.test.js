@@ -1,11 +1,13 @@
-import { React } from 'react';
-import { render, screen } from '@testing-library/react';
+/* eslint-disable react/display-name */
+jest.mock('./components/log', () => () => <div role="log"/>);
 
+import React from 'react';
+import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders App', () => {
-	render(<App/>);
-	const someText = screen.getByText('App');
+test('renders the App', () => {
+	const { getByRole } = render(<App/>);
 
-	expect(someText).toBeInTheDocument();
+	expect(getByRole('log')).toBeInTheDocument();
+	expect(getByRole('app')).toHaveClass('App');
 });

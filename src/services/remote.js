@@ -1,8 +1,11 @@
+import context from '../core/context';
 import axios from 'axios';
 
 const Remote = {
 	fetchEvents: async () => {
-		await axios.get('http://localhost:5000');
+		const events = await axios.get('http://localhost:5000');
+
+		context.actions.updateEvents(events);
 	},
 };
 
