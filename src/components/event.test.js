@@ -4,6 +4,7 @@ import Event from './event';
 describe('event', () => {
 	test('event represent event details', () => {
 		const time = Date.now();
+		//TODO: Use random values.
 		const { getByRole }
 			= render(Event({ id: '1', event: 'start', time: time }));
 

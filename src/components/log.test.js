@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 
 jest.mock('../core/context', () =>	({ state: { events: [{}] }}));
+//TODO: Remove the unnecessary attribute, key.
 jest.mock('./event', () => () => <div key="1" role="event"/>);
 
 import React from 'react';
@@ -13,5 +14,6 @@ describe('log', () => {
 
 		expect(getByRole('log')).toBeInTheDocument();
 		expect(getByRole('event')).toBeInTheDocument();
+		//TODO: Test whether events are mapped.
 	});
 });
