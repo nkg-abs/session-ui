@@ -6,7 +6,7 @@ const Remote = {
 		// TODO: Get the baseURL from config.
 		const { data } = await axios.get('http://localhost:5000');
 
-		context.actions.updateEvents(data);
+		context.actions.setEvents(data);
 	},
 
 	createEvent: async (type) => {

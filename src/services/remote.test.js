@@ -6,17 +6,16 @@ describe('remote', () => {
 	const { fetchEvents, createEvent } = Remote;
 
 	test('fetchEvents fetches latest events', async () => {
-		const promise = { data: Symbol('promise') };
+		const response = { data: Symbol('response') };
 
-		// TODO: Rename the variable as Response, as a promise is not returned when an async call is preceded by await.
-		jest.spyOn(axios, 'get').mockReturnValue(promise);
+		jest.spyOn(axios, 'get').mockReturnValue(response);
 		// TODO: Remove the unnecessary mockReturnValue.
-		jest.spyOn(actions, 'updateEvents').mockReturnValue();
+		jest.spyOn(actions, 'setEvents').mockReturnValue();
 
 		await fetchEvents();
 
 		expect(axios.get).toHaveBeenCalledWith('http://localhost:5000');
-		expect(actions.updateEvents).toHaveBeenCalledWith(promise.data);
+		expect(actions.setEvents).toHaveBeenCalledWith(response.data);
 	});
 
 	test('createEvent updates a new event', async () => {

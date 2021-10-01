@@ -1,5 +1,5 @@
 const actions = {
-	updateEvents: ({ data: { events }}) => ({
+	setEvents: ({ data: { events }}) => ({
 		// TODO: Rename the action to setEvents.
 		events,
 	}),

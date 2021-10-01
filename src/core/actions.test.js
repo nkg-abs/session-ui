@@ -1,11 +1,11 @@
 import actions from './actions';
 
 describe('actions', () => {
-	test('updateEvents, updates entire events from db', () => {
+	test('setEvents, updates entire events from db', () => {
 		const events = Symbol('events');
-		const { updateEvents } = actions;
+		const { setEvents } = actions;
 
-		const result = updateEvents({ data: { events }});
+		const result = setEvents({ data: { events }});
 
 		expect(result).toEqual({ events });
 	});
