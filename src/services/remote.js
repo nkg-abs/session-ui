@@ -3,12 +3,20 @@ import axios from 'axios';
 
 const Remote = {
 	fetchEvents: async () => {
-		//TODO: Get the baseURL from config.
-		const events = await axios.get('http://localhost:5000');
+		// TODO: Get the baseURL from config.
+		const { data } = await axios.get('http://localhost:5000');
 
-		//TODO: Pass the data, not the response.
-		context.actions.updateEvents(events);
+		context.actions.updateEvents(data);
 	},
+
+	createEvent: async (type) => {
+		await axios.post('http://localhost:5000', {
+			event: type,
+		});
+
+		Remote.fetchEvents();
+	},
+
 };
 
 export default Remote;

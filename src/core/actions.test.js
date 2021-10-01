@@ -5,7 +5,7 @@ describe('actions', () => {
 		const events = Symbol('events');
 		const { updateEvents } = actions;
 
-		const result = updateEvents({ data: { data: { events }}});
+		const result = updateEvents({ data: { events }});
 
 		expect(result).toEqual({ events });
 	});
