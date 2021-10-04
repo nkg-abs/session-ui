@@ -1,9 +1,7 @@
 const actions = {
-	setEvents: ({ data: { events }}) => ({
-		// TODO: Rename the action to setEvents.
-		events,
+	setEvents: ({ data }) => ({
+		events: data,
 	}),
-
 };
 
 export default actions;
