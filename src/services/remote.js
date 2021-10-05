@@ -1,21 +1,23 @@
-import context from '../core/context';
 import axios from 'axios';
 
-const { baseUrl } = context.config;
-
 const Remote = {
-	fetchEvents: async () => {
+	fetchEvents: async (context) => {
+		const { baseUrl } = context.config;
 		const { data } = await axios.get(baseUrl);
 
 		context.actions.setEvents(data);
 	},
 
-	createEvent: async (type) => {
-		await axios.post(baseUrl, {
+	createEvent: async (context, type) => {
+		const { baseUrl } = context.config;
+
+		const { data } = await axios.post(baseUrl, {
 			event: type,
 		});
 
-		Remote.fetchEvents();
+		const { events } = context.state;
+
+		context.actions.setEvents(events.concat(data));
 	},
 
 };

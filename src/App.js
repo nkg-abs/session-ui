@@ -3,14 +3,15 @@ import './App.scss';
 import Log from './components/log';
 import Start from './components/start';
 import Remote from './services/remote';
+import context from './core/context';
 
 const App = () =>	{
-	useEffect(Remote.fetchEvents, []);
+	useEffect(() => Remote.fetchEvents(context), []);
 
 	return (
 		<div className="App" role="app">
-			<div>{ Start() }</div>
-			{ Log() }
+			<div>{ Start(context) }</div>
+			{ Log(context) }
 		</div>
 	);
 };

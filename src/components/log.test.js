@@ -1,15 +1,15 @@
-/* eslint-disable react/display-name */
-jest.mock('../core/context', () => ({ state: { events: [] }}));
 import { React, render } from '@testing-library/react';
 import Log from './log';
-import context from '../core/context';
 import Event from './event';
 
 describe('log', () => {
 	test('log display list of events', () => {
+		const context = { state: { events: [] }};
+
 		jest.spyOn(context.state.events, 'map')
 			.mockReturnValue(<div key="1" role="event"/>);
-		const { getByRole } = render(Log());
+
+		const { getByRole } = render(Log(context));
 
 		expect(context.state.events.map).toHaveBeenCalledWith(Event);
 		expect(getByRole('log')).toBeInTheDocument();

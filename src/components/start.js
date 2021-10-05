@@ -1,8 +1,8 @@
 import React from 'react';
 import Remote from '../services/remote';
 
-const Start = () =>
-	<button role="start" onClick={ () => Remote.createEvent('start') }>
+const Start = (context) =>
+	<button role="start" onClick={ () => Remote.createEvent(context, 'start') }>
 		Start
 	</button>;
 

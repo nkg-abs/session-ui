@@ -1,12 +1,11 @@
 import React from 'react';
-import context from '../core/context';
 import Event from './event';
 
-const Log = () =>
+const Log = ({ state: { events }}) =>
 	<div>
 		<div role="log">Log:</div>
 		{
-			context.state.events.map(Event)
+			events.map(Event)
 		}
 	</div>;
 
