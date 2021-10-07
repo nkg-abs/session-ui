@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Remote from '../services/remote';
+import EventManager from '../services/eventManager';
 import Start from './start';
 
 describe('start', () => {
@@ -13,11 +13,12 @@ describe('start', () => {
 	});
 
 	test('when clicks triggers the action, createEvent', () => {
-		jest.spyOn(Remote, 'createEvent').mockReturnValue();
+		jest.spyOn(EventManager, 'createEvent').mockReturnValue();
 		const component = render(Start(context)).getByRole('start');
 
 		fireEvent.click(component);
 
-		expect(Remote.createEvent).toHaveBeenCalledWith(context, 'start');
+		expect(EventManager.createEvent)
+			.toHaveBeenCalledWith({ ...context, data: 'start' });
 	});
 });
